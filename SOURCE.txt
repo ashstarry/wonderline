@@ -1,0 +1,6 @@
+LXGW Marker Gothic Regular / 霞鹜漫黑
+Upstream: https://github.com/lxgw/LxgwMarkerGothic
+Original file: fonts/ttf/LXGWMarkerGothic-Regular.ttf (unmodified)
+License: SIL Open Font License 1.1 — see OFL-LXGWMarkerGothic.txt
+Authors: see AUTHORS-LXGWMarkerGothic.txt
+Retrieved 2026-10-16. Used only for explicitly requested lettering inside a drawing.
