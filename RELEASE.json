@@ -1,17 +1,23 @@
 {
-  "release": "2026-10-26-companion-rename",
-  "previousGitHubRelease": "f597819d614311b9c4951d80963eea277bf206fc",
-  "sourceBaseline": "60943d1351bc22e1ad4d4ba40eccff834ed05c48",
-  "language": "English only",
+  "release": "2026-10-26-full-bilingual-studio",
+  "previousGitHubRelease": "6022addae7fdac9d03d2bfbfcf6185a72dc90cec",
+  "stableEnglishCheckpoint": "f597819d614311b9c4951d80963eea277bf206fc",
+  "sourceCommit": "8a7f1435d66294f37ba853e1e543f1ec6531bb28",
+  "cloudVersion": 86,
+  "languages": [
+    "en",
+    "zh"
+  ],
+  "defaultLanguage": "en",
   "checks": {
-    "offlineTests": 416,
+    "offlineTests": 1328,
     "failures": 0,
     "typecheck": "passed",
-    "browser": "rename, duplicate, empty, cancel, persistence, existing-companion recall"
+    "browser": "rename, persistence, duplicate and empty protection, current companion recall, 390px layout, language switch, picturebook save, story selection and playback"
   },
   "sourceArchive": "wonderline-source.zip",
-  "sourceSha256": "9742d873410a5167f25fe5125c278733c434864ae9592eca406a6cc34da6c800",
-  "unchangedCoreFiles": {
+  "sourceSha256": "e463c359d4b684260d309f2f0866b19941a44837ba98aebec172dd6b4a464318",
+  "unchangedPipelineAndModelFiles": {
     "lib/live-painting.ts": "3f06ae4b2fec06acef7411df149f21c1765e944814f39342dcc87dbc2706343e",
     "lib/drawing-lookahead.ts": "7d2620f7f45f5d1c970f8928e31e45987a32dc13e6c0e80fc04bbf089a171da1",
     "lib/imagine-stream-client.ts": "d08fba6fba1da55a26b3f23a37720bb946b42f0ff2182f40dc033a25e0243f22",
@@ -24,7 +30,8 @@
     "lib/drawing-model.ts": "6856ae6cc37027c1750e1bb04f15cd7daccd1e5561b7e406661a7465d8dc565e",
     "lib/rolling-speech.ts": "f4f9d61e76b40303a32268a81a9d38f64790889dd68daf858697bb00958d4c96",
     "lib/router-speech.ts": "62dcaa2e87128549fdbe44d967d0b18c986d49337080948bd0d4c8d7580756da",
-    "lib/speech-endpoint.ts": "99efa33f4f92f7ece8d9e4880e8f05870cbd8a2f6d66e320a62680190824b921",
-    "lib/realtime-audio.ts": "398f33acccd8a7553b74a9e265c4026d45e5a40a1401dd72d3e7d67085cb7962"
+    "lib/realtime-audio.ts": "398f33acccd8a7553b74a9e265c4026d45e5a40a1401dd72d3e7d67085cb7962",
+    "lib/chinese-rolling-speech.ts": "46d249e52669208b5f8f39e7b6515f5312ffcb8237ecaf8b196ae0d80c314690",
+    "lib/chinese-speech-boundary.ts": "927ecf9ab1e500bf124313a2b10a0f969b64ab7b32c811aceab24acee7445cc3"
   }
 }

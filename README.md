@@ -1,19 +1,17 @@
-# Wonderline
+# Wonderline · 一笔奇境
 
 Keep talking while your imagination takes shape, stroke by stroke.
 
-[Open the studio](https://ashstarry.github.io/wonderline/)
+[Open the studio](https://ashstarry.github.io/wonderline/) · [Cloud studio](https://softspoken-paper-garden.neonolm3.chatgpt.site/)
 
-## Companions
+English is the default; choose 简体中文 in the language menu. Both languages support continuous speech while the picture is being drawn.
 
-Keep a character, give them a name, and bring the same friend into another story. In **My companions**, choose **Rename**, enter a new name, then **Save name**. Their artwork and identity stay the same.
+Keep and name companions, rename them in My companions, and bring the same friends into another picture. Save drawings and words to your picturebook, replay stories, explore inspiration on a blank page, and move, resize or rotate objects.
 
-This public release remains English-only. Speech recognition and drawing generation run in the existing cloud service; no personal computer serves this website. API keys stay on the server and are not included in this repository or the browser release.
+[Download the source code](./wonderline-source.zip) · [Release verification](./RELEASE.json)
 
-## Source
+The repository contains the browser-only GitHub Pages release and a sanitized source archive with application code, tests and build instructions. Speech recognition and drawing generation run in the cloud. No personal computer serves this website. API keys remain on the server and are absent from the frontend and source archive.
 
-[Download the source code](./wonderline-source.zip). The archive contains application source, tests, build instructions and dependencies manifest. It excludes keys, environment files, local recordings, browser histories, and local server tools. See [release verification](./RELEASE.json).
-
-Drawings, words and companions are stored in each visitor's browser, separately for each website address.
+Drawings, words and companions are stored in each visitor's browser, separately for each website address. The two addresses do not share browser storage. No recordings, personal drawings, transcripts, environment files or runtime state are included in this repository.
 
 The included LXGW Marker Gothic font is licensed under SIL Open Font License 1.1; see OFL-LXGWMarkerGothic.txt and AUTHORS-LXGWMarkerGothic.txt.
