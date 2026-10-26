@@ -1,0 +1,30 @@
+{
+  "release": "2026-10-26-companion-rename",
+  "previousGitHubRelease": "f597819d614311b9c4951d80963eea277bf206fc",
+  "sourceBaseline": "60943d1351bc22e1ad4d4ba40eccff834ed05c48",
+  "language": "English only",
+  "checks": {
+    "offlineTests": 416,
+    "failures": 0,
+    "typecheck": "passed",
+    "browser": "rename, duplicate, empty, cancel, persistence, existing-companion recall"
+  },
+  "sourceArchive": "wonderline-source.zip",
+  "sourceSha256": "9742d873410a5167f25fe5125c278733c434864ae9592eca406a6cc34da6c800",
+  "unchangedCoreFiles": {
+    "lib/live-painting.ts": "3f06ae4b2fec06acef7411df149f21c1765e944814f39342dcc87dbc2706343e",
+    "lib/drawing-lookahead.ts": "7d2620f7f45f5d1c970f8928e31e45987a32dc13e6c0e80fc04bbf089a171da1",
+    "lib/imagine-stream-client.ts": "d08fba6fba1da55a26b3f23a37720bb946b42f0ff2182f40dc033a25e0243f22",
+    "lib/preview-buffer.ts": "0eb35e6b92e58755fb8cfb8c35d3811e0bb0c09f2f613e39512bcf3b865c7aa8",
+    "components/svg-stroke-playback.ts": "fa5ad7a22b15aff136def4a28d1117cfc9fea9e058e3a4a54911bb4f5d3b20fc",
+    "components/stroke-playback-queue.ts": "a094a62a87f711d598db572b51c6b5c945ff5b9b4ec8d26395d68f6c59df5110",
+    "components/painter-regions.ts": "469b1a32ad32b97f126d0b41d33847807cbb7a59d9c1a749581aef0ee6ec6b2a",
+    "components/drawing-pace.ts": "78ea4b9b472ebd9ce552f749d9d1f76aa34ea5885d3c90895e8ff0820f205279",
+    "lib/drawing-prompt.ts": "d90c3736d47adcf4ebca757922accd3a45a3bf1fb4fdbf0ed4493e020fe966fd",
+    "lib/drawing-model.ts": "6856ae6cc37027c1750e1bb04f15cd7daccd1e5561b7e406661a7465d8dc565e",
+    "lib/rolling-speech.ts": "f4f9d61e76b40303a32268a81a9d38f64790889dd68daf858697bb00958d4c96",
+    "lib/router-speech.ts": "62dcaa2e87128549fdbe44d967d0b18c986d49337080948bd0d4c8d7580756da",
+    "lib/speech-endpoint.ts": "99efa33f4f92f7ece8d9e4880e8f05870cbd8a2f6d66e320a62680190824b921",
+    "lib/realtime-audio.ts": "398f33acccd8a7553b74a9e265c4026d45e5a40a1401dd72d3e7d67085cb7962"
+  }
+}
