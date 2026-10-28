@@ -2,7 +2,7 @@
 
 Keep talking while your imagination takes shape, stroke by stroke.
 
-[Open the studio](https://ashstarry.github.io/wonderline/) · [Cloud studio](https://softspoken-paper-garden.neonolm3.chatgpt.site/)
+[Open the studio](https://wonderline.fun/) · [Cloud studio](https://softspoken-paper-garden.neonolm3.chatgpt.site/)
 
 English is the default; choose 简体中文 in the language menu. Both languages support continuous speech while the picture is being drawn.
 

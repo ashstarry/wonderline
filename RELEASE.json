@@ -1,22 +1,22 @@
 {
-  "release": "2026-10-26-full-bilingual-studio",
-  "previousGitHubRelease": "6022addae7fdac9d03d2bfbfcf6185a72dc90cec",
+  "release": "2026-10-28-wonderline-fun",
+  "previousGitHubRelease": "82f88d5fc5f3df5e8f9a1314c6488a3ff955bae6",
   "stableEnglishCheckpoint": "f597819d614311b9c4951d80963eea277bf206fc",
-  "sourceCommit": "8a7f1435d66294f37ba853e1e543f1ec6531bb28",
-  "cloudVersion": 86,
+  "sourceCommit": "fa3032313d3e84870294a4e5a05a57fe42efeaf1",
+  "cloudVersion": 87,
   "languages": [
     "en",
     "zh"
   ],
   "defaultLanguage": "en",
   "checks": {
-    "offlineTests": 1328,
+    "offlineTests": 96,
     "failures": 0,
     "typecheck": "passed",
-    "browser": "rename, persistence, duplicate and empty protection, current companion recall, 390px layout, language switch, picturebook save, story selection and playback"
+    "browser": "production verification follows DNS and HTTPS configuration"
   },
   "sourceArchive": "wonderline-source.zip",
-  "sourceSha256": "e463c359d4b684260d309f2f0866b19941a44837ba98aebec172dd6b4a464318",
+  "sourceSha256": "e20b1c6642c65ed2d9ef5b6e2ed1a92b9262c952429d0c06206c1d18678a4248",
   "unchangedPipelineAndModelFiles": {
     "lib/live-painting.ts": "3f06ae4b2fec06acef7411df149f21c1765e944814f39342dcc87dbc2706343e",
     "lib/drawing-lookahead.ts": "7d2620f7f45f5d1c970f8928e31e45987a32dc13e6c0e80fc04bbf089a171da1",
