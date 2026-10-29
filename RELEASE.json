@@ -16,7 +16,7 @@
     "browser": "production verification follows DNS and HTTPS configuration"
   },
   "sourceArchive": "wonderline-source.zip",
-  "sourceSha256": "e20b1c6642c65ed2d9ef5b6e2ed1a92b9262c952429d0c06206c1d18678a4248",
+  "sourceSha256": "5808997f0cb7dc2e1d0608126ae950c103c271862d9541e448fe356194e3cc35",
   "unchangedPipelineAndModelFiles": {
     "lib/live-painting.ts": "3f06ae4b2fec06acef7411df149f21c1765e944814f39342dcc87dbc2706343e",
     "lib/drawing-lookahead.ts": "7d2620f7f45f5d1c970f8928e31e45987a32dc13e6c0e80fc04bbf089a171da1",
@@ -33,5 +33,10 @@
     "lib/realtime-audio.ts": "398f33acccd8a7553b74a9e265c4026d45e5a40a1401dd72d3e7d67085cb7962",
     "lib/chinese-rolling-speech.ts": "46d249e52669208b5f8f39e7b6515f5312ffcb8237ecaf8b196ae0d80c314690",
     "lib/chinese-speech-boundary.ts": "927ecf9ab1e500bf124313a2b10a0f969b64ab7b32c811aceab24acee7445cc3"
-  }
+  },
+  "backendOriginHotfix": "https://softspoken-paper-garden.dongyuanshun.chatgpt.site",
+  "sourceChangesFromCommit": [
+    "lib/studio-endpoint.ts: update cloud origin after provider redirect",
+    "Update two endpoint test expectations for the new origin"
+  ]
 }
