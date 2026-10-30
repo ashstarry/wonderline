@@ -1,8 +1,8 @@
 {
-  "release": "2026-10-30-optional-quick-drawing",
-  "sourceCommit": "ff4d075333f508fb6d9771f1cf7672968d5edaa7",
-  "previousGitHubRelease": "e44980c4314cf53ee30630856a72df569922d980",
-  "cloudVersion": 95,
+  "release": "2026-10-30-paper-corner-speed-sticker",
+  "sourceCommit": "637e8b1c2bfb3029c3e50d368ea3e940047c5469",
+  "previousGitHubRelease": "2e3164a76c6690ced7e4f186a901ad2e71625247",
+  "cloudVersion": 96,
   "defaultDrawingModel": "openai/gpt-6-luna",
   "optionalDrawingModel": "inception/mercury-3",
   "defaultLanguage": "en",
@@ -13,15 +13,15 @@
   "publicUrl": "https://wonderline.fun/",
   "backendOrigin": "https://softspoken-paper-garden.dongyuanshun.chatgpt.site",
   "checks": {
-    "offlineTests": 1411,
+    "offlineTests": 17,
     "failures": 0,
+    "priorFullSuite": 1411,
     "typecheck": "passed",
-    "visual": "desktop and 390px CSS layout; model switch and quality disclosure",
-    "hostedSpeech": "English and Chinese: noise rejected, speech recognized; legacy endpoints connected.",
-    "hostedDrawing": "Luna and Mercury: valid drawing responses with public-origin CORS."
+    "visual": "desktop and 390px phone width: paper-corner sticker, expanded quality disclosure, switch visibility",
+    "behavior": "Only entry position, icon and CSS changed; model selection, speech and pipeline code unchanged."
   },
   "sourceArchive": "wonderline-source.zip",
-  "sourceSha256": "59efbe9a8c25de2ce77e763b4b10c29e0f236144fdbfc070fbbaec036ae73199",
+  "sourceSha256": "c522c8c6bdfa0c3cb8f5317364192611333faf388ac49c3c1cbe4ea9c02d750a",
   "unchangedReleaseCore": {
     "lib/drawing-prompt.ts": "d90c3736d47adcf4ebca757922accd3a45a3bf1fb4fdbf0ed4493e020fe966fd",
     "lib/live-painting.ts": "3f06ae4b2fec06acef7411df149f21c1765e944814f39342dcc87dbc2706343e",
@@ -32,5 +32,10 @@
   },
   "sourceFiles": 371,
   "publicResearchTextLogging": false,
-  "audioStored": false
+  "audioStored": false,
+  "changes": [
+    "app/page.tsx",
+    "components/DrawingSpeedChoice.tsx",
+    "components/drawing-speed-choice.css"
+  ]
 }
