@@ -2,9 +2,9 @@
 
 Keep talking while your imagination takes shape, stroke by stroke.
 
-[Open the studio](https://wonderline.fun/) · [Cloud studio](https://softspoken-paper-garden.neonolm3.chatgpt.site/)
+[Open the studio](https://wonderline.fun/) · [Cloud studio](https://softspoken-paper-garden.dongyuanshun.chatgpt.site/)
 
-English is the default; choose 简体中文 in the language menu. Both languages support continuous speech while the picture is being drawn.
+English is the default; choose 简体中文 in the language menu. Luna remains the default drawing model. Open “A little quicker?” to opt into Mercury: faster drawings may have less detail and precision. Switching keeps your current picture and words. Both languages support continuous speech while the picture is being drawn.
 
 Keep and name companions, rename them in My companions, and bring the same friends into another picture. Save drawings and words to your picturebook, replay stories, explore inspiration on a blank page, and move, resize or rotate objects.
 

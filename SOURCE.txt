@@ -1,6 +1,3 @@
-LXGW Marker Gothic Regular / 霞鹜漫黑
-Upstream: https://github.com/lxgw/LxgwMarkerGothic
-Original file: fonts/ttf/LXGWMarkerGothic-Regular.ttf (unmodified)
-License: SIL Open Font License 1.1 — see OFL-LXGWMarkerGothic.txt
-Authors: see AUTHORS-LXGWMarkerGothic.txt
-Retrieved 2026-10-16. Used only for explicitly requested lettering inside a drawing.
+Source: wonderline-source.zip
+Commit: ff4d075333f508fb6d9771f1cf7672968d5edaa7
+No credentials or private runtime data are included.
