@@ -1,8 +1,8 @@
 {
-  "release": "2026-10-30-paper-corner-speed-sticker",
-  "sourceCommit": "637e8b1c2bfb3029c3e50d368ea3e940047c5469",
-  "previousGitHubRelease": "2e3164a76c6690ced7e4f186a901ad2e71625247",
-  "cloudVersion": 96,
+  "release": "2026-10-30-compact-speed-tab",
+  "sourceCommit": "d37c27ea2d49cfb753cbdc3ff36db300670c695c",
+  "previousGitHubRelease": "bf9053e6666e19047adf2bb0514432fb21dfc949",
+  "cloudVersion": 97,
   "defaultDrawingModel": "openai/gpt-6-luna",
   "optionalDrawingModel": "inception/mercury-3",
   "defaultLanguage": "en",
@@ -17,11 +17,11 @@
     "failures": 0,
     "priorFullSuite": 1411,
     "typecheck": "passed",
-    "visual": "desktop and 390px phone width: paper-corner sticker, expanded quality disclosure, switch visibility",
-    "behavior": "Only entry position, icon and CSS changed; model selection, speech and pipeline code unchanged."
+    "visual": "desktop and 390px phone layout: compact paper-edge tab and clear speed/accuracy copy",
+    "behavior": "Only wording, icon size and CSS changed; model selection, speech and pipeline unchanged."
   },
   "sourceArchive": "wonderline-source.zip",
-  "sourceSha256": "c522c8c6bdfa0c3cb8f5317364192611333faf388ac49c3c1cbe4ea9c02d750a",
+  "sourceSha256": "9fa9e69570214cb9993b3d1329b409eb5eb01d05992fe16954de5b019a7d6348",
   "unchangedReleaseCore": {
     "lib/drawing-prompt.ts": "d90c3736d47adcf4ebca757922accd3a45a3bf1fb4fdbf0ed4493e020fe966fd",
     "lib/live-painting.ts": "3f06ae4b2fec06acef7411df149f21c1765e944814f39342dcc87dbc2706343e",
@@ -34,8 +34,8 @@
   "publicResearchTextLogging": false,
   "audioStored": false,
   "changes": [
-    "app/page.tsx",
     "components/DrawingSpeedChoice.tsx",
-    "components/drawing-speed-choice.css"
+    "components/drawing-speed-choice.css",
+    "scripts/export-pages.mjs"
   ]
 }
