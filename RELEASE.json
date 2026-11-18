@@ -1,8 +1,8 @@
 {
-  "release": "2026-10-30-compact-speed-tab",
-  "sourceCommit": "d37c27ea2d49cfb753cbdc3ff36db300670c695c",
-  "previousGitHubRelease": "bf9053e6666e19047adf2bb0514432fb21dfc949",
-  "cloudVersion": 97,
+  "release": "2026-11-18-streaming-continuity",
+  "sourceCommit": "30e07d7e1815247cdc0041e875dbc0561170b60c",
+  "previousGitHubRelease": "8a00c46abe939bc07a9fd3ec7f60eb93010979a2",
+  "cloudVersion": 98,
   "defaultDrawingModel": "openai/gpt-6-luna",
   "optionalDrawingModel": "inception/mercury-3",
   "defaultLanguage": "en",
@@ -13,19 +13,16 @@
   "publicUrl": "https://wonderline.fun/",
   "backendOrigin": "https://softspoken-paper-garden.dongyuanshun.chatgpt.site",
   "checks": {
-    "offlineTests": 17,
+    "offlineTests": 1416,
     "failures": 0,
-    "priorFullSuite": 1411,
     "typecheck": "passed",
-    "visual": "desktop and 390px phone layout: compact paper-edge tab and clear speed/accuracy copy",
-    "behavior": "Only wording, icon size and CSS changed; model selection, speech and pipeline unchanged."
+    "hostedSpeech": "Both public-origin gateways connected. Primary and fallback ASR providers returned HTTP 401 during release verification."
   },
   "sourceArchive": "wonderline-source.zip",
-  "sourceSha256": "9fa9e69570214cb9993b3d1329b409eb5eb01d05992fe16954de5b019a7d6348",
+  "sourceSha256": "9f616e9d54f6681620aa93b80e4354ae3e446cb9994b615c7a53708a43d38350",
   "unchangedReleaseCore": {
     "lib/drawing-prompt.ts": "d90c3736d47adcf4ebca757922accd3a45a3bf1fb4fdbf0ed4493e020fe966fd",
     "lib/live-painting.ts": "3f06ae4b2fec06acef7411df149f21c1765e944814f39342dcc87dbc2706343e",
-    "lib/drawing-lookahead.ts": "7d2620f7f45f5d1c970f8928e31e45987a32dc13e6c0e80fc04bbf089a171da1",
     "lib/rolling-speech.ts": "f4f9d61e76b40303a32268a81a9d38f64790889dd68daf858697bb00958d4c96",
     "components/svg-stroke-playback.ts": "fa5ad7a22b15aff136def4a28d1117cfc9fea9e058e3a4a54911bb4f5d3b20fc",
     "components/stroke-playback-queue.ts": "a094a62a87f711d598db572b51c6b5c945ff5b9b4ec8d26395d68f6c59df5110"
@@ -34,8 +31,14 @@
   "publicResearchTextLogging": false,
   "audioStored": false,
   "changes": [
-    "components/DrawingSpeedChoice.tsx",
-    "components/drawing-speed-choice.css",
-    "scripts/export-pages.mjs"
-  ]
+    "lib/chinese-speech-boundary.ts",
+    "lib/drawing-lookahead.ts",
+    "lib/experimental-rolling-speech.ts",
+    "lib/router-speech.ts",
+    "tests/chinese-speech-boundary.test.mjs",
+    "tests/drawing-lookahead.test.mjs",
+    "tests/experimental-speech-cleanup.test.mjs",
+    "tests/speech-only-profile.test.mjs"
+  ],
+  "githubSourceCommit": "32710b7d97226c4c4bb980b3f53cc3e236305bfb"
 }

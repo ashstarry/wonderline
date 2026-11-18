@@ -1,3 +1,3 @@
-Source: wonderline-source.zip
-Commit: d37c27ea2d49cfb753cbdc3ff36db300670c695c
-No credentials or private runtime data are included.
+Source: https://github.com/ashstarry/wonderline/tree/source
+Archive: wonderline-source.zip
+Cloud source commit: 30e07d7e1815247cdc0041e875dbc0561170b60c
