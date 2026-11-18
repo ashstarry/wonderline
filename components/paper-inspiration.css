@@ -1,0 +1,87 @@
+/* A few unfinished thoughts on the paper. This layer never enters the artwork. */
+.paper-inspiration{position:absolute;inset:0;z-index:2;overflow:hidden;container:paper-inspiration / size;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility 0s linear .3s;color:#73816d}
+.paper-inspiration.is-visible{opacity:1;visibility:visible;transition:opacity .65s ease,visibility 0s}
+.paper-inspiration.is-over-artwork:before{content:'';position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,249,235,.99),rgba(251,243,224,.99));pointer-events:none}
+.paper-inspiration-composition{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 28px 18px;isolation:isolate}
+.paper-inspiration-heading{display:flex;align-items:center;justify-content:center;gap:15px;margin:0 0 30px;opacity:.9}
+.paper-inspiration-heading h2{font-family:Georgia,'Songti SC',serif;font-size:clamp(25px,3.8cqw,38px);font-style:italic;font-weight:400;letter-spacing:-1px;color:#777d66;line-height:1.2}
+.paper-inspiration-heading>span{width:33px;height:1px;background:linear-gradient(90deg,transparent,#a8ac8a80);transform:rotate(-4deg)}
+.paper-inspiration-heading>span:last-child{transform:rotate(-4deg) scaleX(-1)}
+.paper-ideas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;width:min(100%,840px);gap:clamp(18px,4cqw,62px);min-height:0}
+.paper-idea{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;min-height:44px;padding:4px 3px 0;border-radius:42%;color:#748777;pointer-events:none;transition:transform .3s ease,color .25s ease;isolation:isolate}
+.paper-inspiration.is-visible .paper-idea,.paper-inspiration.is-visible .paper-inspiration-controls button{pointer-events:auto}
+.paper-idea--0{transform:translateY(7px) rotate(-3deg);--idea-tone:#70878a}
+.paper-idea--1{transform:translateY(-5px) rotate(2deg);--idea-tone:#97816e}
+.paper-idea--2{transform:translateY(14px) rotate(-1deg);--idea-tone:#8c8b6c}
+.paper-idea:before{content:'';position:absolute;inset:17% 0 13%;border-radius:50%;background:radial-gradient(ellipse,#fffdf499,transparent 68%);z-index:-1;opacity:0;transition:opacity .25s}
+.paper-idea:hover:before,.paper-idea.is-chosen:before{opacity:1}
+.paper-idea:hover:not(:disabled),.paper-idea.is-chosen{color:#586e58}
+.paper-idea:focus-visible{outline:1px dashed #8da27c;outline-offset:7px;border-radius:18px}
+.paper-idea.is-chosen .paper-idea-question:after{opacity:1;transform:scaleX(1)}
+.paper-idea-sketch{display:block;width:min(100%,200px);height:auto;aspect-ratio:220/160;color:var(--idea-tone);overflow:visible;opacity:.79;transition:opacity .25s,transform .3s}
+.paper-idea:hover .paper-idea-sketch,.paper-idea.is-chosen .paper-idea-sketch{opacity:1;transform:translateY(-2px)}
+.paper-sketch-wash{stroke:none;opacity:.44}
+.wash-blue{fill:#accad2}.wash-peach{fill:#dfb49b}.wash-honey{fill:#e4c279}.wash-sage{fill:#b8c5a1}
+.paper-sketch-light{opacity:.5}
+.paper-idea-question{position:relative;display:block;max-width:220px;min-height:2.7em;margin:8px 0 0;font-size:clamp(14px,1.7cqw,17px);font-family:Georgia,'Songti SC',serif;line-height:1.45;text-wrap:balance;overflow-wrap:anywhere;color:#68745d}
+.paper-idea-question:after{content:'';position:absolute;left:10%;right:10%;bottom:-4px;height:3px;background:#d9bb7959;border-radius:50%;transform:scaleX(.25) rotate(-1deg);opacity:0;transition:opacity .25s,transform .25s}
+.paper-idea-whisper{display:block;max-width:240px;min-height:3.1em;margin-top:10px;font-size:11px;line-height:1.55;text-wrap:balance;overflow-wrap:anywhere;color:#7e8b73}
+.paper-inspiration-note{font-size:11px;line-height:1.6;color:#91957e;text-align:center;margin-top:26px;letter-spacing:.1px}
+.paper-inspiration-controls{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:5px;flex-shrink:0}
+.paper-inspiration-controls button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;min-width:40px;padding:6px 9px;font-size:11px;line-height:1.3;color:#8c927b;border-radius:20px;pointer-events:none}
+.paper-inspiration-controls button:hover:not(:disabled){color:#667853;background:#f4efdf99}
+.paper-inspiration-controls button:focus-visible{outline:1px solid #8da27c;outline-offset:1px}
+.paper-inspiration-controls>span{height:10px;width:1px;background:#c7c7af80}
+.paper-inspiration[data-language=zh] .paper-inspiration-heading h2{font-style:normal;font-size:clamp(25px,3.5cqw,34px);letter-spacing:3px}
+.paper-inspiration[data-language=zh] .paper-idea-question{font-family:'LXGW Marker Gothic','PingFang SC',sans-serif;font-size:clamp(15px,1.8cqw,18px);line-height:1.6}
+
+@container paper-inspiration (max-width:650px){
+  .paper-inspiration-composition{padding:19px 15px 12px}
+  .paper-inspiration-heading{margin-bottom:15px;gap:10px}
+  .paper-inspiration-heading h2{font-size:28px}
+  .paper-ideas{gap:7px;max-width:440px}
+  .paper-idea{padding:0 1px}
+  .paper-idea-sketch{width:140px;max-width:100%}
+  .paper-idea-question{font-size:13px;line-height:1.45;max-width:145px;min-height:4.3em;margin-top:5px}
+  .paper-inspiration[data-language=zh] .paper-idea-question{font-size:14px;line-height:1.55;min-height:3.1em}
+  .paper-idea-whisper{font-size:10px;margin-top:6px}
+  .paper-inspiration-note{font-size:10px;margin-top:15px}
+}
+/* Narrow paper gets one generous thought, preserving the breathing room of the opening. */
+@container paper-inspiration (max-width:420px){
+  .paper-inspiration-composition{padding:12px 18px 8px}
+  .paper-inspiration-heading{margin-bottom:3px}
+  .paper-inspiration-heading h2{font-size:26px}
+  .paper-ideas{display:block;width:100%;max-width:280px}
+  .paper-idea{display:none;transform:none}
+  .paper-idea--1{display:flex;max-width:260px;margin:auto}
+  .paper-idea-sketch{width:150px;max-width:100%}
+  .paper-idea-question{max-width:240px;min-height:0;margin-top:5px;font-size:17px;line-height:1.45}
+  .paper-inspiration[data-language=zh] .paper-idea-question{font-size:18px;line-height:1.55;min-height:0}
+  .paper-idea-whisper{font-size:11px;margin-top:7px}
+  .paper-inspiration-note{max-width:260px;font-size:10px;line-height:1.5;margin-top:9px}
+  .paper-inspiration-controls{margin-top:2px}
+}
+/* Short paper is common on phones: one beautiful invitation, not three squeezed cards. */
+@container paper-inspiration (max-height:300px){
+  .paper-inspiration-composition{padding:10px 20px 6px;justify-content:center}
+  .paper-inspiration-heading,.paper-inspiration-note{display:none}
+  .paper-ideas{display:block;width:min(100%,410px)}
+  .paper-idea{display:none;transform:none}
+  .paper-idea--1{display:grid;grid-template-columns:110px minmax(0,1fr);column-gap:12px;text-align:left;border-radius:10px;max-width:none}
+  .paper-idea-sketch{grid-column:1;grid-row:1 / span 2;width:110px}
+  .paper-idea-question,.paper-inspiration[data-language=zh] .paper-idea-question{grid-column:2;min-height:0;max-width:240px;font-size:15px;line-height:1.5;margin:0;align-self:end}
+  .paper-idea-whisper{grid-column:2;min-height:0;margin-top:5px;align-self:start}
+  .paper-inspiration-controls{margin-top:2px}
+}
+@container paper-inspiration (max-height:180px){
+  .paper-inspiration-composition{padding:4px 12px}
+  .paper-idea--1{grid-template-columns:82px minmax(0,1fr);column-gap:10px}
+  .paper-idea-sketch{width:82px}
+  .paper-idea-question,.paper-inspiration[data-language=zh] .paper-idea-question{font-size:14px}
+  .paper-idea-whisper{font-size:10px;margin-top:4px}
+  .paper-inspiration-controls{margin-top:0}
+  .paper-inspiration-controls button{min-height:36px;font-size:10px}
+}
+.paper-inspiration.is-reduced-motion,.paper-inspiration.is-reduced-motion *{transition:none!important;animation:none!important}
+@media(prefers-reduced-motion:reduce){.paper-inspiration,.paper-inspiration *{transition:none!important;animation:none!important}}

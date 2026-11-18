@@ -1,0 +1,9 @@
+/* A small paper label attached to the selection, readable without hovering. */
+.object-companion-action{box-sizing:border-box;display:flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;height:44px;padding:5px 10px;border:1px solid #b8c4a9;border-radius:9px;background:#fffdf7;color:#4b6142;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;text-align:left;white-space:nowrap;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;box-shadow:0 1px 4px #46523d13;transition:background .15s ease,border-color .15s ease}
+.object-companion-action__icon{flex-shrink:0;color:#71865e}
+.object-companion-action__copy{display:flex;flex-direction:column;gap:2px;min-width:0}
+.object-companion-action__label{font-size:12px;line-height:1.25;font-weight:600;color:#4b6142;letter-spacing:.01em}
+.object-companion-action__hint{font-size:10px;line-height:1.25;font-weight:400;color:#737e67}
+.object-companion-action:hover{background:#f4f7ec;border-color:#8da477}
+.object-companion-action:focus-visible{outline:2px solid #779967;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.object-companion-action{transition:none}}

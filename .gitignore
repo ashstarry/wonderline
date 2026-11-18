@@ -1,0 +1,10 @@
+node_modules/
+work/
+dist/
+.next/
+.sites-runtime/
+.wrangler/
+.env*
+.dev.vars*
+.secrets/
+*.tsbuildinfo

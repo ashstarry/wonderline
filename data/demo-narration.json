@@ -1,0 +1,422 @@
+{
+  "team": {
+    "zh": {
+      "src": "/demo-narration/team-zh.m4a",
+      "duration": 6.776,
+      "segments": [
+        {
+          "text": "画一条美人鱼。",
+          "start": 0.15,
+          "end": 1.382,
+          "cue": 1.162,
+          "apply": 1.462
+        },
+        {
+          "text": "美人鱼右边游来一条小金鱼。",
+          "start": 1.682,
+          "end": 4.172,
+          "cue": 3.952,
+          "apply": 4.252
+        },
+        {
+          "text": "左边再来一只小海龟。",
+          "start": 4.472,
+          "end": 6.476,
+          "cue": 6.256,
+          "apply": 6.556
+        }
+      ]
+    },
+    "en": {
+      "src": "/demo-narration/team-en.m4a",
+      "duration": 6.295,
+      "segments": [
+        {
+          "text": "Draw a mermaid.",
+          "start": 0.15,
+          "end": 1.06,
+          "cue": 0.84,
+          "apply": 1.14
+        },
+        {
+          "text": "A little goldfish swims to the right of the mermaid.",
+          "start": 1.36,
+          "end": 3.852,
+          "cue": 3.632,
+          "apply": 3.932
+        },
+        {
+          "text": "Add a little sea turtle on the left.",
+          "start": 4.152,
+          "end": 5.995,
+          "cue": 5.775,
+          "apply": 6.075
+        }
+      ]
+    }
+  },
+  "scale": {
+    "zh": {
+      "src": "/demo-narration/scale-zh.m4a",
+      "duration": 5.832,
+      "segments": [
+        {
+          "text": "画一只小兔子。",
+          "start": 0.15,
+          "end": 1.406,
+          "cue": 1.186,
+          "apply": 1.486
+        },
+        {
+          "text": "兔子旁边有一朵小花。",
+          "start": 1.706,
+          "end": 3.649,
+          "cue": 3.429,
+          "apply": 3.729
+        },
+        {
+          "text": "远处有一座大山。",
+          "start": 3.949,
+          "end": 5.532,
+          "cue": 5.312,
+          "apply": 5.612
+        }
+      ]
+    },
+    "en": {
+      "src": "/demo-narration/scale-en.m4a",
+      "duration": 6.206,
+      "segments": [
+        {
+          "text": "Draw a little rabbit.",
+          "start": 0.15,
+          "end": 1.269,
+          "cue": 1.049,
+          "apply": 1.349
+        },
+        {
+          "text": "There is a small flower beside the rabbit.",
+          "start": 1.569,
+          "end": 3.703,
+          "cue": 3.483,
+          "apply": 3.783
+        },
+        {
+          "text": "There is a big mountain in the distance.",
+          "start": 4.003,
+          "end": 5.906,
+          "cue": 5.686,
+          "apply": 5.986
+        }
+      ]
+    }
+  },
+  "ground": {
+    "zh": {
+      "src": "/demo-narration/ground-zh.m4a",
+      "duration": 6.584,
+      "segments": [
+        {
+          "text": "画两个站着的小朋友。",
+          "start": 0.15,
+          "end": 1.986,
+          "cue": 1.766,
+          "apply": 2.066
+        },
+        {
+          "text": "他们站在湖边的草地上。",
+          "start": 2.286,
+          "end": 4.299,
+          "cue": 4.079,
+          "apply": 4.379
+        },
+        {
+          "text": "湖对面有一间小屋。",
+          "start": 4.599,
+          "end": 6.284,
+          "cue": 6.064,
+          "apply": 6.364
+        }
+      ]
+    },
+    "en": {
+      "src": "/demo-narration/ground-en.m4a",
+      "duration": 6.902,
+      "segments": [
+        {
+          "text": "Draw two children standing together.",
+          "start": 0.15,
+          "end": 2.174,
+          "cue": 1.954,
+          "apply": 2.254
+        },
+        {
+          "text": "They are standing on grass beside a lake.",
+          "start": 2.474,
+          "end": 4.574,
+          "cue": 4.354,
+          "apply": 4.654
+        },
+        {
+          "text": "There is a cottage across the lake.",
+          "start": 4.874,
+          "end": 6.602,
+          "cue": 6.382,
+          "apply": 6.682
+        }
+      ]
+    }
+  },
+  "hug": {
+    "zh": {
+      "src": "/demo-narration/hug-zh.m4a",
+      "duration": 4.194,
+      "segments": [
+        {
+          "text": "画一只小熊。",
+          "start": 0.15,
+          "end": 1.289,
+          "cue": 1.069,
+          "apply": 1.369
+        },
+        {
+          "text": "让小熊抱着一个红色的球。",
+          "start": 1.589,
+          "end": 3.894,
+          "cue": 3.674,
+          "apply": 3.974
+        }
+      ]
+    },
+    "en": {
+      "src": "/demo-narration/hug-en.m4a",
+      "duration": 3.243,
+      "segments": [
+        {
+          "text": "Draw a little bear.",
+          "start": 0.15,
+          "end": 1.141,
+          "cue": 0.921,
+          "apply": 1.221
+        },
+        {
+          "text": "Let the bear hold a red ball.",
+          "start": 1.441,
+          "end": 2.943,
+          "cue": 2.723,
+          "apply": 3.023
+        }
+      ]
+    }
+  },
+  "edit": {
+    "zh": {
+      "src": "/demo-narration/edit-zh.m4a",
+      "duration": 6.75,
+      "segments": [
+        {
+          "text": "画一间红屋顶的小屋。",
+          "start": 0.15,
+          "end": 1.974,
+          "cue": 1.754,
+          "apply": 2.054
+        },
+        {
+          "text": "旁边有一棵树。",
+          "start": 2.274,
+          "end": 3.545,
+          "cue": 3.325,
+          "apply": 3.625
+        },
+        {
+          "text": "屋顶颜色不对，应该是蓝色。",
+          "start": 3.845,
+          "end": 6.45,
+          "cue": 6.23,
+          "apply": 6.53
+        }
+      ]
+    },
+    "en": {
+      "src": "/demo-narration/edit-en.m4a",
+      "duration": 6.37,
+      "segments": [
+        {
+          "text": "Draw a cottage with a red roof.",
+          "start": 0.15,
+          "end": 1.791,
+          "cue": 1.571,
+          "apply": 1.871
+        },
+        {
+          "text": "There is a tree beside it.",
+          "start": 2.091,
+          "end": 3.355,
+          "cue": 3.135,
+          "apply": 3.435
+        },
+        {
+          "text": "The roof is the wrong color. It should be blue.",
+          "start": 3.655,
+          "end": 6.07,
+          "cue": 5.85,
+          "apply": 6.15
+        }
+      ]
+    }
+  },
+  "space": {
+    "zh": {
+      "src": "/demo-narration/space-zh.m4a",
+      "duration": 10.416,
+      "segments": [
+        {
+          "text": "画一条特别大的恐龙，几乎占满整张纸。",
+          "start": 0.15,
+          "end": 3.762,
+          "cue": 3.542,
+          "apply": 3.842
+        },
+        {
+          "text": "它右边再站一条同样大的恐龙，不能遮住第一条，也不要缩小它们。",
+          "start": 4.062,
+          "end": 10.116,
+          "cue": 9.896,
+          "apply": 10.196
+        }
+      ]
+    },
+    "en": {
+      "src": "/demo-narration/space-en.m4a",
+      "duration": 9.564,
+      "segments": [
+        {
+          "text": "Draw a very big dinosaur that fills almost the whole page.",
+          "start": 0.15,
+          "end": 3.474,
+          "cue": 3.254,
+          "apply": 3.554
+        },
+        {
+          "text": "Put another dinosaur just as big to its right. Don’t cover the first one or make either of them smaller.",
+          "start": 3.774,
+          "end": 9.264,
+          "cue": 9.044,
+          "apply": 9.344
+        }
+      ]
+    }
+  },
+  "reframe": {
+    "en": {
+      "src": "/demo-narration/reframe-en.m4a",
+      "duration": 4.317,
+      "segments": [
+        {
+          "text": "Here is a mountain range.",
+          "start": 0.15,
+          "end": 1.435,
+          "cue": 1.215,
+          "apply": 1.515
+        },
+        {
+          "text": "And below the mountains, there is a temple.",
+          "start": 1.735,
+          "end": 4.017,
+          "cue": 3.797,
+          "apply": 4.097
+        }
+      ]
+    },
+    "zh": {
+      "src": "/demo-narration/reframe-zh.m4a",
+      "duration": 4.399,
+      "segments": [
+        {
+          "text": "这是一片群山。",
+          "start": 0.15,
+          "end": 1.578,
+          "cue": 1.358,
+          "apply": 1.658
+        },
+        {
+          "text": "山下呢，还有一座寺庙。",
+          "start": 1.878,
+          "end": 4.099,
+          "cue": 3.879,
+          "apply": 4.179
+        }
+      ]
+    }
+  },
+  "flow": {
+    "en": {
+      "src": "/demo-narration/flow-en.m4a",
+      "duration": 10.037,
+      "segments": [
+        {
+          "text": "Here is a mountain range.",
+          "start": 0.15,
+          "end": 1.435,
+          "cue": 1.215,
+          "apply": 1.515
+        },
+        {
+          "text": "And below the mountains, there is a temple.",
+          "start": 1.735,
+          "end": 4.017,
+          "cue": 3.797,
+          "apply": 4.097
+        },
+        {
+          "text": "Beside the temple, a little dog is playing.",
+          "start": 4.317,
+          "end": 6.759,
+          "cue": 6.539,
+          "apply": 6.839
+        },
+        {
+          "text": "Up in the sky, here comes a flying saucer.",
+          "start": 7.059,
+          "end": 9.737,
+          "cue": 9.517,
+          "apply": 9.817
+        }
+      ]
+    },
+    "zh": {
+      "src": "/demo-narration/flow-zh.m4a",
+      "duration": 10.011,
+      "segments": [
+        {
+          "text": "这是一片群山。",
+          "start": 0.15,
+          "end": 1.578,
+          "cue": 1.358,
+          "apply": 1.658
+        },
+        {
+          "text": "山下呢，还有一座寺庙。",
+          "start": 1.878,
+          "end": 4.099,
+          "cue": 3.879,
+          "apply": 4.179
+        },
+        {
+          "text": "寺庙旁边，有一只小狗在玩。",
+          "start": 4.399,
+          "end": 7.258,
+          "cue": 7.038,
+          "apply": 7.338
+        },
+        {
+          "text": "天上呢，还有一架飞碟。",
+          "start": 7.558,
+          "end": 9.711,
+          "cue": 9.491,
+          "apply": 9.791
+        }
+      ]
+    }
+  }
+}

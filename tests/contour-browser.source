@@ -1,0 +1,58 @@
+// Real-browser regression fixture. Bundle as TSX with the same SceneCanvas used
+// by the studio. No model calls, storage writes, or microphone access.
+import React,{useState,useRef,useEffect} from 'react';
+import {createRoot} from 'react-dom/client';
+import SceneCanvas from '../components/SceneCanvas';
+
+const empty={title:'先勾轮廓，再涂颜色',sky:'paper',weather:'clear',ground:'none',objects:[]};
+const circle={type:'ellipse',x:0,y:0,w:140,h:140,fill:'#eeb955',stroke:'#70532f',strokeWidth:3};
+const body={type:'path',d:'M -90 70 L -90 -35 L 0 -105 L 90 -35 L 90 70 Z',fill:'#eeb955',stroke:'#70532f',strokeWidth:3};
+const cases=[
+ {name:'有描边圆形',marks:[circle]},
+ {name:'无描边圆形',marks:[{...circle,stroke:'none'}]},
+ {name:'无描边小屋',marks:[{...body,stroke:'none'}]},
+ {name:'零宽描边',marks:[{...circle,strokeWidth:0}]},
+ {name:'空心轮廓',marks:[{...circle,fill:'none'}],hollow:true},
+ {name:'流式增加部件',marks:[body,{type:'rect',x:-20,y:5,w:40,h:65,fill:'#84bec5',stroke:'#476b64',strokeWidth:3}],stream:true},
+ {name:'背景铺色',background:true},
+];
+function snapshot(svg){const clone=svg.cloneNode(true),a=[svg,...svg.querySelectorAll('*')],b=[clone,...clone.querySelectorAll('*')];
+ a.forEach((node,i)=>{if(node.hasAttribute('data-drawing-mark'))b[i].style.opacity=getComputedStyle(node).opacity;});
+ clone.setAttribute('viewBox','350 160 310 300');
+ return new XMLSerializer().serializeToString(clone);
+}
+function Lab(){
+ const [scene,setScene]=useState(empty),[style,setStyle]=useState('watercolor'),[reset,setReset]=useState(0),[results,setResults]=useState([]),[busy,setBusy]=useState(false);
+ const root=useRef(null),drawing=useRef(false),run=useRef(null),proof=useRef({}),sequence=useRef([]);
+ function start(test,medium){setStyle(medium);setScene(empty);setReset(x=>x+1);setTimeout(()=>{
+  const base={...empty,objects:test.background?[]:[{id:'subject',kind:'drawing',x:500,y:330,scale:1.25,color:'#eeb955',marks:test.stream?test.marks.slice(0,1):test.marks}]};
+  run.current={name:test.name,style:medium,start:performance.now(),firstOutline:null,firstFill:null,outlineFrames:0,fillFrames:0,outlineCursorFrames:0,colorCursorFrames:0,hollow:!!test.hollow,background:!!test.background,outlineComplete:false,earlyFill:false};
+  setScene(test.background?{...base,ground:'meadow'}:base);
+  if(test.stream)setTimeout(()=>setScene({...base,objects:[{...base.objects[0],marks:test.marks}]}),200);
+ },70);}
+ useEffect(()=>{let frame;function sample(){const r=run.current;if(r){const svg=root.current.querySelector('svg');
+  const outlines=[...svg.querySelectorAll('[data-playback-artifact="outline"] > :not(defs)')];
+  const fills=[...svg.querySelectorAll('[data-playback-artifact="mask"] path')];
+  let partialOutline=false,partialFill=false;
+  for(const p of outlines){const length=p.getTotalLength?.()??0,progress=1-Number(p.style.strokeDashoffset)/Math.max(1,length);if(progress>0&&p.style.visibility!=='hidden'){r.outlineFrames++;r.firstOutline??=Math.round(performance.now()-r.start);if(progress>.35&&progress<.8)partialOutline=true;}}
+  if(outlines.length&&outlines.every(p=>Number(p.style.strokeDashoffset)<.01&&p.style.visibility!=='hidden'))r.outlineComplete=true;
+  for(const p of svg.querySelectorAll('[data-playback-artifact="pen"]'))if(p.getAttribute('display')!=='none'&&p.getAttribute('visibility')==='visible'){const phase=p.getAttribute('data-painter-role');r[phase+'CursorFrames']=(r[phase+'CursorFrames']??0)+1;}
+  for(const p of fills)if(Number(p.style.strokeDashoffset)<p.getTotalLength()&&p.style.visibility!=='hidden'){r.fillFrames++;r.firstFill??=Math.round(performance.now()-r.start);if(!r.background&&!r.outlineComplete)r.earlyFill=true;const progress=1-Number(p.style.strokeDashoffset)/p.getTotalLength();if(progress>.3&&progress<.8)partialFill=true;}
+  if(r.name==='无描边小屋'&&r.style==='watercolor'){
+   if(partialOutline&&!proof.current.outline)proof.current.outline=snapshot(svg);
+   if(partialFill&&!proof.current.fill)proof.current.fill=snapshot(svg);
+  }
+  r.elapsed=Math.round(performance.now()-r.start);
+  if(r.elapsed>400&&!drawing.current||r.elapsed>20000){
+   r.done=!drawing.current;
+   r.pass=r.done&&!r.earlyFill&&(r.background?r.firstFill!==null&&r.outlineCursorFrames===0:r.firstOutline!==null&&r.outlineCursorFrames>0&&(r.hollow?r.firstFill===null:r.firstFill>r.firstOutline&&r.colorCursorFrames>0));
+   r.toolsHidden=[...svg.querySelectorAll('[data-playback-artifact="pen"]')].every(p=>p.getAttribute('display')==='none');r.pass&&=r.toolsHidden;
+   setResults(old=>[...old,{...r}]);run.current=null;
+   const next=sequence.current.shift();if(next)start(...next);else{setBusy(false);for(const [id,markup]of Object.entries(proof.current)){const slot=document.querySelector('#proof-'+id),img=document.createElement('img');img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(markup);img.alt=id==='outline'?'画笔正在沿边缘勾轮廓':'轮廓完成后刷子开始填色';slot.replaceChildren(img);}}
+  }
+  document.querySelector('#metrics').textContent=JSON.stringify(r,null,2);
+ }frame=requestAnimationFrame(sample);}sample();return()=>cancelAnimationFrame(frame);},[]);
+ function all(){setResults([]);proof.current={};sequence.current=['crayon','pencil','watercolor'].flatMap(m=>cases.map(c=>[c,m]));setBusy(true);start(...sequence.current.shift());}
+ return <main><h1>先勾轮廓，再涂颜色</h1><p>三种画风 · 实际绘画引擎 · 不调用模型</p><button disabled={busy} onClick={all}>运行全部检查</button><div ref={root} className={results.length===21?'completed-canvas':'live-canvas'}><SceneCanvas scene={scene} style={style} playbackResetKey={reset} onDrawingChange={v=>drawing.current=v} motionMode="draw"/></div><div className="proof"><figure><figcaption>① 画笔沿轮廓落笔</figcaption><div id="proof-outline"/></figure><figure><figcaption>② 轮廓完成，刷子填色</figcaption><div id="proof-fill"/></figure></div><h2>{results.length} 项完成 · {results.filter(r=>r.pass).length} 项通过</h2><details><summary>检查结果</summary><pre id="results">{JSON.stringify(results,null,2)}</pre></details><details><summary>当前检查</summary><pre id="metrics"/></details></main>;
+}
+createRoot(document.getElementById('root')).render(<Lab/>);

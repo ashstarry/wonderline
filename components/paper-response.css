@@ -1,0 +1,91 @@
+.paper-response {
+  --paper-voice: 0;
+  --paper-warm: 222 160 91;
+  --paper-cool: 144 179 105;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  user-select: none;
+  contain: layout paint;
+  opacity: 0;
+}
+
+.paper-response--pencil { --paper-warm: 226 181 102; --paper-cool: 148 179 115; }
+.paper-response--watercolor { --paper-warm: 225 161 148; --paper-cool: 113 174 173; }
+
+.paper-response[data-state="listening"],
+.paper-response[data-state="preparing"],
+.paper-response[data-state="thinking-drawing"] { opacity: 1; }
+
+.paper-response__rim {
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  box-shadow: inset 0 0 13px 1px rgb(var(--paper-cool) / .35), inset 0 -2px 9px rgb(var(--paper-warm) / .28);
+  opacity: 0;
+}
+
+.paper-response__bloom {
+  position: absolute;
+  width: clamp(110px, 29%, 260px);
+  height: clamp(65px, 17%, 130px);
+  border-radius: 53% 47% 62% 38% / 58% 61% 39% 42%;
+  filter: blur(13px);
+  opacity: 0;
+  transform-origin: center;
+}
+
+.paper-response__bloom--warm {
+  left: -6%;
+  bottom: -10%;
+  background: radial-gradient(ellipse at 53% 40%, rgb(var(--paper-warm) / .60), rgb(var(--paper-warm) / .20) 43%, transparent 73%);
+}
+
+.paper-response__bloom--cool {
+  right: -6%;
+  top: -9%;
+  background: radial-gradient(ellipse at 48% 64%, rgb(var(--paper-cool) / .55), rgb(var(--paper-cool) / .18) 46%, transparent 75%);
+}
+
+.paper-response[data-state="listening"] .paper-response__rim { opacity: calc(var(--paper-voice) * .75); }
+.paper-response[data-state="listening"] .paper-response__bloom { opacity: calc(var(--paper-voice) * .8); }
+.paper-response[data-state="listening"] .paper-response__bloom--warm { transform: translateY(calc(var(--paper-voice) * -12px)); }
+.paper-response[data-state="listening"] .paper-response__bloom--cool { transform: translateY(calc(var(--paper-voice) * 10px)); }
+
+.paper-response[data-state="preparing"] .paper-response__rim { animation: paper-ready-breath 2.4s ease-in-out infinite; }
+.paper-response[data-state="preparing"] .paper-response__bloom--warm { animation: paper-warm-bloom 3.8s ease-in-out infinite; }
+.paper-response[data-state="preparing"] .paper-response__bloom--cool { animation: paper-cool-bloom 4.7s ease-in-out infinite; }
+.paper-response__trail { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
+.paper-response__trail rect { fill: none; stroke: rgb(var(--paper-cool) / .85); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 9 41; }
+.paper-response[data-state="preparing"] .paper-response__trail { opacity: .85; }
+.paper-response[data-state="preparing"] .paper-response__trail rect { animation: paper-ready-travel 4.8s linear infinite; }
+.paper-response[data-state="thinking-drawing"] .paper-response__trail { opacity: .7; }
+.paper-response[data-state="thinking-drawing"] .paper-response__trail rect { animation: paper-ready-travel 4.8s linear infinite; }
+@keyframes paper-ready-travel { to { stroke-dashoffset: -100; } }
+@keyframes paper-ready-breath { 0%,100% { opacity: .35; } 50% { opacity: .8; } }
+
+/* During simultaneous planning/drawing only the thin rim travels. Keep the
+   blurred color washes out of active brush frames. */
+@keyframes paper-warm-bloom {
+  0%, 100% { opacity: .38; transform: translate(0, 0) scale(.96); }
+  48% { opacity: .68; transform: translate(13px, -9px) scale(1.08); }
+}
+@keyframes paper-cool-bloom {
+  0%, 100% { opacity: .30; transform: translate(0, 0) scale(.98); }
+  56% { opacity: .58; transform: translate(-10px, 8px) scale(1.06); }
+}
+
+.paper-response[data-still="true"] .paper-response__bloom { animation: none; transform: none; opacity: 0; }
+.paper-response[data-still="true"][data-state="listening"] { opacity: 0; }
+.paper-response[data-still="true"][data-state="preparing"] .paper-response__bloom { opacity: .25; }
+.paper-response[data-still="true"] .paper-response__rim,
+.paper-response[data-still="true"] .paper-response__trail rect { animation: none; }
+.paper-response[data-still="true"] .paper-response__trail { opacity: 0; }
+.paper-response[data-still="true"][data-state="preparing"] .paper-response__rim { opacity: .45; }
+.paper-response[data-still="true"][data-state="thinking-drawing"] .paper-response__rim { opacity: .35; }
+
+/* Home resolves the system preference and the explicit drawing preference.
+   data-still keeps reduced motion consistent with the actual stroke player. */

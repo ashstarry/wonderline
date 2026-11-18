@@ -1,0 +1,58 @@
+// Uses the production components; only model replies are deterministic fixtures.
+import React,{useState,useRef,useEffect} from 'react';
+import {createRoot} from 'react-dom/client';
+import SceneCanvas from '../components/SceneCanvas';
+import ManualToolbox from '../components/ManualToolbox';
+import ObjectTransformLayer from '../components/ObjectTransformLayer';
+import FreehandLayer from '../components/FreehandLayer';
+import {LanguageProvider,useLanguage} from '../components/LanguageProvider';
+import {readDrawingHistory,writeDrawingHistory} from '../lib/drawing-history';
+import {applyScenePatch,imagineInputSchema} from '../lib/scene-validation';
+import {sceneForModel} from '../lib/eraser';
+import {localToPaper} from '../lib/object-pose';
+import {LiveErasurePreview} from '../components/live-erasure-preview';
+const paper={x:0,y:0,width:1000,height:640};
+const original={title:'Little things, big imagination',sky:'paper',ground:'none',weather:'clear',paper,objects:[
+ {id:'fish',kind:'drawing',x:0,y:0,scale:1,color:'#e9ab55',label:'little fish',marks:[
+ {type:'ellipse',x:530,y:315,w:230,h:145,fill:'#edb959',stroke:'#976c42',strokeWidth:3},
+ {type:'path',d:'M420 315 L355 240 Q330 310 355 390 Z',fill:'#e4a167',stroke:'#976c42',strokeWidth:3},
+ {type:'ellipse',x:590,y:300,w:20,h:26,fill:'#fff8df',stroke:'#976c42',strokeWidth:2},
+ {type:'ellipse',x:593,y:300,w:8,h:13,fill:'#655443',stroke:'none'},
+ {type:'path',d:'M600 333 Q615 346 629 329',fill:'none',stroke:'#976c42',strokeWidth:3},
+ {type:'path',d:'M505 330 Q495 360 525 369 Q549 354 545 330Z',fill:'#e4a167',stroke:'#976c42',strokeWidth:2}]},
+ {id:'star',kind:'star',x:790,y:170,scale:1.2,color:'#e5c365'},
+ {id:'flower',kind:'flower',x:790,y:465,scale:1.2,color:'#d7939c'}]};
+function App(){
+ const {t,language,setLanguage}=useLanguage(),[history,setHistory]=useState([original]),[cursor,setCursor]=useState(0),[tool,setTool]=useState('pen'),[selection,setSelection]=useState(null),[open,setOpen]=useState(false),[color,setColor]=useState('#557344'),[size,setSize]=useState(5),[shape,setShape]=useState('round'),[reset,setReset]=useState(0),[error,setError]=useState(''),[checks,setChecks]=useState(''),[style,setStyle]=useState('crayon');
+ const trigger=useRef(null),freehand=useRef(null),transform=useRef(null),scene=history[cursor];
+ const commit=(next,phrase)=>{setHistory(old=>[...old.slice(0,cursor+1),next]);setCursor(cursor+1);setReset(x=>x+1);};
+ const undo=()=>{setCursor(x=>Math.max(0,x-1));setReset(x=>x+1);};
+ const redo=()=>{setCursor(x=>Math.min(history.length-1,x+1));setReset(x=>x+1);};
+ useEffect(()=>{const key=e=>{if((e.metaKey||e.ctrlKey)&&e.key==='z'){e.preventDefault();if(e.shiftKey)redo();else undo();}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[cursor,history.length]);
+ function reloadHistory(){const saved=readDrawingHistory(writeDrawingHistory({history:history.map(scene=>({scene,phrase:'',message:'',paperId:'test',style})),cursor,style}));setHistory(saved.history.map(e=>e.scene));setCursor(saved.cursor);setReset(x=>x+1);}
+ function continueFixture(){const input=imagineInputSchema.parse({text:'Add a small cloud beside the fish',scene:sceneForModel(scene)});const next=applyScenePatch(input.scene,{action:'update',message:'done',title:null,sky:null,weather:null,ground:null,updates:[],removals:[],additions:[{id:'cloud-'+history.length,kind:'cloud',x:200,y:150,scale:.6,color:'#a6cbcf',label:'cloud'}]}).scene;commit({...next,erasures:scene.erasures},'fixture');}
+ async function audit(){
+  const canvas=document.querySelector('#main-artwork');const erased=scene.erasures?.at(-1);if(!erased){setChecks('请先擦一笔');return;}
+  const target=erased.targets.find(t=>t.key.startsWith('mark:fish:'));const object=scene.objects.find(o=>o.id==='fish');
+  const paths=[...canvas.querySelectorAll('[data-manual-object="fish"] mask path')];
+  // The stored sweep and its rendered inverse matrix must agree after turns.
+  const sample=[...erased.paths[0].matchAll(/[ML]([-+\d.]+) ([-+\d.]+)/g)][0];
+  const raw=new DOMPoint(Number(sample[1]),Number(sample[2]));
+  const relevant=paths.find(p=>p.parentNode.getAttribute('transform')?.includes('scale('));
+  const oldAngle=(target.rotation??0)*Math.PI/180,x=(raw.x-target.x)/target.scale,y=(raw.y-target.y)/target.scale;
+  const local={x:x*Math.cos(oldAngle)+y*Math.sin(oldAngle),y:-x*Math.sin(oldAngle)+y*Math.cos(oldAngle)};
+  const point=localToPaper(local,object);
+  const markup=new XMLSerializer().serializeToString(canvas);const img=new Image();img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(markup);await img.decode();
+  const raster=document.createElement('canvas');raster.width=1000;raster.height=640;const ctx=raster.getContext('2d');ctx.drawImage(img,0,0,1000,640);
+  const pixel=ctx.getImageData(Math.round(point.x),Math.round(point.y),1,1).data;
+  setChecks(JSON.stringify({erasedPixel:[...pixel],paperVisible:pixel[0]>240&&pixel[1]>225&&pixel[2]>200,rotation:object.rotation??0,maskPaths:paths.length,shape:erased.shape??'round',sceneAccepted:imagineInputSchema.safeParse({text:'more',scene}).success}));
+ }
+ async function perf(){const layer=document.querySelector('[data-pigment-layer]'),preview=new LiveErasurePreview(layer,scene,paper,38,'perf',shape),points=[],times=[];
+  for(let i=0;i<600;i++){points.push({x:180+i,y:480+Math.sin(i/25)*35});const start=performance.now();preview.update(points);times.push(performance.now()-start);}
+  const paths=document.querySelectorAll('[data-playback-artifact="live-erasure"] path').length;preview.dispose();times.sort((a,b)=>a-b);setChecks(JSON.stringify({sampleUpdates:600,pathChunks:paths,p95UpdateMs:times[570],maxUpdateMs:times.at(-1)}));
+ }
+ return <main><header><strong>Wonderline <small>一笔奇境</small></strong><span>As you speak, wonder takes shape.</span><button onClick={()=>setLanguage(language==='en'?'zh':'en')}>{language==='en'?'中文':'English'}</button></header><div className="top"><span>{t('拖一拖，换位置')}</span><div><button onClick={undo} disabled={!cursor}>Undo</button><button onClick={redo} disabled={cursor===history.length-1}>Redo</button><button onClick={reloadHistory}>Reload saved scene</button><button onClick={continueFixture}>Mock next voice instruction</button><button onClick={audit}>Check erased pixels</button><button onClick={perf}>Check long erase</button><select aria-label="Medium" value={style} onChange={e=>setStyle(e.target.value)}><option value="crayon">Crayon</option><option value="pencil">Pencil</option><option value="watercolor">Watercolor</option></select></div></div>
+ <div className="canvas-stage"><ManualToolbox open={open} triggerRef={trigger} onToggle={()=>setOpen(x=>!x)} tool={tool} color={color} size={size} disabled={false} onToolChange={setTool} onColorChange={c=>{setColor(c);setTool('pen');}} onSizeChange={setSize} eraserShape={shape} onEraserShapeChange={setShape} onClose={()=>setOpen(false)} selection={selection} onObjectAction={action=>{if(action==='front')transform.current?.front();else if(action==='delete')transform.current?.remove();else if(action==='smaller'||action==='bigger')transform.current?.resize(action==='bigger'?1.15:1/1.15);else transform.current?.turn(action==='straighten'?null:action==='left'?-15:15);}}/><div className="art-frame"><SceneCanvas scene={scene} style={style} viewport={paper} id="main-artwork" className="artwork" motionMode="still" playbackResetKey={reset}/><FreehandLayer scene={scene} viewport={paper} tool={tool==='move'?'none':tool} color={color} width={size} eraserShape={shape} controlsRef={freehand} onCommit={commit} onError={setError}/><ObjectTransformLayer scene={scene} viewport={paper} enabled={tool==='move'} controlsRef={transform} onCommit={commit} onSelectionChange={setSelection}/></div></div>
+ <footer><div className="mic">♩</div><p>As you speak, wonder takes shape.</p></footer><p role="status">{error}</p><details><summary>Local test details — no model requests</summary><pre id="scene-state">{JSON.stringify({scene,cursor,historyLength:history.length,tool,shape,size,checks},null,2)}</pre></details><output id="checks">{checks}</output></main>;
+}
+createRoot(document.getElementById('root')).render(<LanguageProvider><App/></LanguageProvider>);

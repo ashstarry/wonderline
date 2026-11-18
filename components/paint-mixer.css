@@ -1,0 +1,28 @@
+.paint-mixer { width: 100%; min-width: 0; margin: 0 0 12px; border-top: 1px solid #e8eddf; border-bottom: 1px solid #e8eddf; color: #627450; }
+.paint-mixer > summary { min-height: 44px; display: flex; justify-content: space-between; align-items: center; gap: 8px; cursor: pointer; list-style: none; font-size: 12px; font-weight: 500; }
+.paint-mixer > summary::-webkit-details-marker { display: none; }
+.paint-mixer > summary > span { display: flex; align-items: center; gap: 7px; }
+.paint-mixer[open] > summary > svg { transform: rotate(180deg); }
+.paint-mixer > summary:focus-visible, .paint-mixer button:focus-visible { outline: 2px solid #789766; outline-offset: 2px; border-radius: 7px; }
+.paint-mixer-body { padding-bottom: 12px; }
+.paint-mixer-body > p { margin: 0 0 9px; font-size: 11px; line-height: 1.5; }
+.paint-mixer-pots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+.paint-mixer button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; }
+.paint-mixer .paint-mixer-pot { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-width: 44px; min-height: 65px; padding: 4px 0; background: #f5f5eb; border: 1px solid transparent; border-radius: 11px; font-size: 10px; }
+.paint-mixer .paint-mixer-pot:hover:not(:disabled) { background: #edf2e4; border-color: #d6dfca; }
+.paint-mixer-drop { position: relative; display: block; width: 32px; height: 34px; }
+.paint-mixer-drop svg { width: 32px; height: 34px; fill: var(--mix-pot-color); stroke: #48583b35; stroke-width: 1px; }
+.paint-mixer-drop .paint-mixer-shine { fill: none; stroke: #fff; stroke-width: 2px; stroke-linecap: round; opacity: .6; }
+.paint-mixer-drop b { position: absolute; right: -5px; bottom: -1px; display: grid; place-items: center; width: 16px; height: 16px; background: #fffdf7; border: 1px solid #dae2ce; border-radius: 50%; font-size: 9px; font-weight: 500; color: #526446; }
+.paint-mixer-result { display: flex; align-items: center; gap: 6px; margin: 10px 0 4px; min-height: 62px; }
+.paint-mixer-puddle { flex: 0 0 45%; width: 45%; height: 62px; }
+.paint-mixer-puddle > path:first-child { stroke: #5b694426; stroke-width: 1px; transition: fill .16s ease; }
+.paint-mixer-result > div { font-size: 11px; line-height: 1.45; }
+.paint-mixer-result small { display: block; margin-top: 3px; font-size: 10px; color: #738164; }
+.paint-mixer-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 4px 0 7px; }
+.paint-mixer .paint-mixer-actions > button { display: flex; justify-content: center; align-items: center; gap: 5px; min-height: 44px; padding: 6px 3px; border: 1px solid #dce3d0; border-radius: 9px; font-size: 10px; background: #fffdf7; }
+.paint-mixer .paint-mixer-use { width: 100%; min-height: 44px; padding: 8px; display: flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid #cddcbf; border-radius: 10px; background: #e8efdc; font-size: 12px; font-weight: 500; }
+.paint-mixer button:hover:not(:disabled) { background: #dde8ce; }
+.paint-mixer button:disabled { cursor: default; opacity: .45; }
+.paint-mixer-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+@media (prefers-reduced-motion: reduce) { .paint-mixer-puddle > path:first-child { transition: none; } }
